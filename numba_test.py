@@ -28,26 +28,21 @@ def numba_jit(x, y):
 
 def exe_time_printer(x, y):
 
-    print('x = ' + str(x) + ', y = ' + str(y) + '\n')
-    print('numpy_only, start!')
     start = time()
     numpy_only(x, y)
     np_exe_time = time() - start
-    print('exe_time: {}[sec]'.format(np_exe_time) + '\n')
 
-    print('numba_jit, start!')
     start = time()
     numba_jit(x, y)
     nb_exe_time = time() - start
-    print('exe_time: {}[sec]'.format(nb_exe_time) + '\n')
 
-    return np_exe_time, nb_exe_time
+    return "%.10f"%np_exe_time, "%.10f"%nb_exe_time
 
 li = [1, 10, 100, 1000, 10000]
 df = pd.DataFrame(index=['np_exe_time','nb_exe_time'])
 
 for i in li:
     np_exe_time, nb_exe_time = exe_time_printer(i, i)
-    df[str(i)] = [str(np_exe_time) + '[sec]', str(nb_exe_time) + '[sec]']
+    df[str(i)] = [np_exe_time + '[sec]', nb_exe_time + '[sec]']
 
 print(df)
