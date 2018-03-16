@@ -38,11 +38,12 @@ def exe_time_printer(x, y):
 
     return "%.10f"%np_exe_time, "%.10f"%nb_exe_time
 
-li = [1, 10, 100, 1000, 10000]
+num = np.arange(0,10001,100)
+num
 df = pd.DataFrame(index=['np_exe_time','nb_exe_time'])
 
-for i in li:
-    np_exe_time, nb_exe_time = exe_time_printer(i, i)
-    df[str(i)] = [np_exe_time + '[sec]', nb_exe_time + '[sec]']
-
+for i in num:
+    np_exe_time, nb_exe_time = exe_time_printer(int(i), int(i))
+    df[str(i)] = [np_exe_time[:5] + '[sec]', nb_exe_time[:5] + '[sec]']
+    
 print(df)
