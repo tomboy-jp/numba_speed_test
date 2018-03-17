@@ -1,7 +1,9 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from time import time
 from numba import jit
+import sys
 
 def numpy_only(x_num, y_num):
 
@@ -38,12 +40,16 @@ def exe_time_printer(x, y):
 
     return "%.10f"%np_exe_time, "%.10f"%nb_exe_time
 
-num = np.arange(0,10001,100)
-num
-df = pd.DataFrame(index=['np_exe_time','nb_exe_time'])
+freq = np.arange(0,10001,1000)
+df = pd.DataFrame(columns=['freq','np_exe_time','nb_exe_time'])
 
-for i in num:
+for i in freq:
+    print(i)
     np_exe_time, nb_exe_time = exe_time_printer(int(i), int(i))
-    df[str(i)] = [np_exe_time[:5] + '[sec]', nb_exe_time[:5] + '[sec]']
-    
-print(df)
+    se = pd.Series([i, float(np_exe_time[:7]), float(nb_exe_time[:7])], index=df.columns)
+    df = df.append(se, ignore_index=True)
+
+df.to_csv('result/result.tsv', sep='\t', index=False)
+df.plot(x='freq', y=['np_exe_time', 'nb_exe_time'], colormap='jet', marker='.', markersize=10, title='Numba Speed Test', figsize=(10,5), alpha=0.5)
+plt.savefig('result/result.png')
+plt.pause(5)
