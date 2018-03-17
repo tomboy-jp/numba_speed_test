@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from time import time
 from numba import jit
-import sys
 
 def numpy_only(x_num, y_num):
 
