@@ -35,7 +35,7 @@ def jit_on(freq):
 
 def exe_time_printer(freq):
     '''
-    2つの関数に係数freq(実行回数:freq**2)を引き渡してそれぞれの実行時間を10進数のstr型で出力する関数です。
+    2つの関数に係数freq(実行回数=freq**2)を引き渡してそれぞれの実行時間を10進数のstr型で出力する関数です。
     '''
 
     start = time()
