@@ -53,7 +53,7 @@ jitデコレータなしverとjitデコレータverの2つの関数を用意し�
 ![実行結果](https://raw.githubusercontent.com/tomboy-jp/numba_speed_test/master/result/result.png "実行結果")
 
 x軸がループの回数でy軸が実行時間(sec)を示している。
-青いグラフがnumpyだけの(jitデコレータなしの)実験結果で、赤いグラフがnumbaを使った実験結果である。  
+青いグラフがjitデコレータなしの実験結果で、赤いグラフがjitデコレータを使った実験結果である。  
 
 うん、numba強いね。  
 JITコンパイルは正義だね。  
