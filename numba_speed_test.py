@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 from time import time
 from numba import jit
 
-def numpy_only(x_num, y_num):
+def numpy_only(num):
 
     result = float(0)
-    X = np.random.rand(x_num)
-    Y = np.random.rand(y_num)
+    X = np.random.rand(num)
+    Y = np.random.rand(num)
     for x in X:
         for y in Y:
             result += x - y
@@ -16,35 +16,35 @@ def numpy_only(x_num, y_num):
     return result
 
 @jit
-def numba_jit(x, y):
+def numba_jit(num):
 
     result = float(0)
-    X = np.random.rand(x)
-    Y = np.random.rand(y)
+    X = np.random.rand(num)
+    Y = np.random.rand(num)
     for x in X:
         for y in Y:
             result += x - y
 
     return result
 
-def exe_time_printer(x, y):
+def exe_time_printer(num):
 
     start = time()
-    numpy_only(x, y)
+    numpy_only(num)
     np_exe_time = time() - start
 
     start = time()
-    numba_jit(x, y)
+    numba_jit(num)
     nb_exe_time = time() - start
 
     return "%.10f"%np_exe_time, "%.10f"%nb_exe_time
 
-freq = np.arange(0,10001,100)
+freq = np.arange(0,10001,10000)
 df = pd.DataFrame(columns=['freq','np_exe_time','nb_exe_time'])
 
 for i in freq:
     # print(i)
-    np_exe_time, nb_exe_time = exe_time_printer(int(i), int(i))
+    np_exe_time, nb_exe_time = exe_time_printer(int(i))
     se = pd.Series([i, float(np_exe_time[:7]), float(nb_exe_time[:7])], index=df.columns)
     df = df.append(se, ignore_index=True)
 
