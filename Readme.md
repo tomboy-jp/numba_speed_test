@@ -2,7 +2,8 @@
 numbaモジュールを使って関数を雑に高速化します。  
 ## numbaとは  
 特定条件下でPythonの実行速度を超絶高速化するモジュールです。  
-[公式](https://numba.pydata.org/)によるとPythonインタプリタを切り替えることなくC、C ++、Fortranと同様にJIT(Just In Time)コンパイルできる、とのこと。  
+[公式](https://numba.pydata.org/)によるとPythonインタプリタを切り替えることなくC、C ++、Fortranと同様に  
+JIT(Just In Time)コンパイルできる、とのこと。  
 import時にLLVMコンパイラなるもので最適化したコードを生成してくれるそうです。  
 LLVMコンパイラすごい。C++で作られているとの情報を入手した時点で中身を見るのを断念したけど、きっとすごい。  
 
