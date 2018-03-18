@@ -39,7 +39,7 @@ def exe_time_printer(num):
 
     return "%.10f"%np_exe_time, "%.10f"%nb_exe_time
 
-freq = np.arange(0,10001,10000)
+freq = np.arange(0,10001,100)
 df = pd.DataFrame(columns=['freq','np_exe_time','nb_exe_time'])
 
 for i in freq:
