@@ -30,7 +30,7 @@ numpyのことは幅広くサポートしているみたいでモジュール内
 もっと知りたいときは公式の[リファレンスマニュアル](http://numba.pydata.org/numba-doc/0.37.0/reference/index.html)から。
 
 ## 実験内容
-試験に使ったコードは[こちら](https://github.com/tomboy-jp/numba_speed_test/blob/master/numba_test.py)。  
+試験に使ったコードは[こちら](https://github.com/tomboy-jp/numba_speed_test/blob/master/numba_test.py)  
 計算に使用して居るコア部分は、  
 ```
 result = float(0)
