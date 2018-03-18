@@ -42,7 +42,7 @@ for x in X:
 
 return result
 ```
-といった感じ。  
+といった感じ。  
 実にシンプルですな。  
   
 jitデコレータなしverとjitデコレータverの2つの関数を用意し、  
