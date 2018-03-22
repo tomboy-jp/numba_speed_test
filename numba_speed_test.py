@@ -48,10 +48,10 @@ def exe_time_printer(freq):
 
     return "%.10f"%exe_time_jit_off, "%.10f"%exe_time_jit_on
 
-frequencies = np.arange(0, 10001, 100)
+frequency = np.arange(0, 10001, 100)
 df = pd.DataFrame(columns=['freq','exe_time_jit_off','exe_time_jit_on'])
 
-for freq in frequencies:
+for freq in frequency:
     print(freq)
     exe_time_jit_off, exe_time_jit_on = exe_time_printer(int(freq))
     se = pd.Series([freq, float(exe_time_jit_off[:8]), float(exe_time_jit_on[:8])], index=df.columns)
