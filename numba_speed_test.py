@@ -8,7 +8,6 @@ def jit_off(num):
     '''
     numbaを使わない方の関数です。
     '''
-    np.set_printoptions(precision=8, suppress=True)
     result = float(0)
     X = np.random.rand(freq)
     Y = np.random.rand(freq)
@@ -23,7 +22,6 @@ def jit_on(freq):
     '''
     numbaを使う方の関数です。
     '''
-    np.set_printoptions(precision=8, suppress=True)
     result = float(0)
     X = np.random.rand(freq)
     Y = np.random.rand(freq)
@@ -37,17 +35,19 @@ def exe_time_printer(freq):
     '''
     2つの関数に係数freq(実行回数=freq**2)を引き渡してそれぞれの実行時間を10進数のstr型で出力する関数です。
     '''
+    np.set_printoptions(precision=8, suppress=True)
 
     start = time()
     jit_off(freq)
     exe_time_jit_off = time() - start
+
 
     start = time()
     jit_on(freq)
     exe_time_jit_on = time() - start
 
     # return "%.10f"%exe_time_jit_off, "%.10f"%exe_time_jit_on
-    return exe_time_jit_off, exe_time_jit_on
+    return exe_time_jit_off.astype(np.float), exe_time_jit_on.astype(np.float)
 
 frequency = np.arange(0, 10001, 100)
 df = pd.DataFrame(columns=['freq','exe_time_jit_off','exe_time_jit_on'])
